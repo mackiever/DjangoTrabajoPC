@@ -1,7 +1,10 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 
 def index(request):
-    name = request.GET.get("name") or "any other random text message"
-    return HttpResponse("Hello, {}!" .format(name))
+    #viewvar = "Max Macavilca"
+    return render(request, "base.html")
+    #page 67
 
-# Create your views here.
+def search_view(request):
+    user_search = request.GET.get("user_search") or "Please enter a book title in order to search."
+    return render(request, "search_result.html", {"search_result" : user_search})
